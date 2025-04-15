@@ -20,7 +20,6 @@ function App() {
   const [getUser, setUser] = useState(null);
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged(async (user) => {
-      console.log(user);
       if (user) {
         const userRequest = await fetchUserRole(user.uid);
         setUserRole(userRequest);
