@@ -5,11 +5,7 @@ export const fetchPendingVerification = async () => {
   try {
     const usersRef = collection(db, "users");
 
-    const q = query(
-      usersRef,
-      where("verificationDocs", "!=", null),
-      where("businessVerified", "!=", false)
-    );
+    const q = query(usersRef, where("verificationDocs", "!=", null));
 
     const querySnapshot = await getDocs(q);
 
