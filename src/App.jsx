@@ -11,7 +11,7 @@ import { fetchUserRole } from "./hooks/data/userData";
 import DashboardScreen from "./screens/DashboardScreen";
 import ProtectedRoute from "./components/ProtectedRoute";
 import { auth } from "./config/firebaseConfig";
-import VerifyScreen from "./screens/VerifyScreen";
+import UsersScreen from "./screens/UsersScreen";
 import VehiclesScreen from "./screens/VehiclesScreen";
 
 function App() {
@@ -48,10 +48,10 @@ function App() {
         />
 
         <Route
-          path="/verify"
+          path="/users"
           element={
             <ProtectedRoute role={userRole} allowedRoles={["admin"]}>
-              <VerifyScreen getUser={getUser} />
+              <UsersScreen getUser={getUser} />
             </ProtectedRoute>
           }
         />
