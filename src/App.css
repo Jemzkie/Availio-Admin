@@ -1,5 +1,29 @@
 @import "tailwindcss";
 
+:root {
+  --primary: #ffffff;
+  --secondary: #e60000;
+}
+
+*::-webkit-scrollbar {
+  width: 6px;
+  background-color: var(--primary);
+}
+
+*::-webkit-scrollbar-track {
+  background-color: var(--primary);
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: var(--secondary);
+}
+
+.shadow-xy {
+  box-shadow: 0px 0px 3px 1px rgba(0, 0, 0, 0.1);
+  -webkit-box-shadow: 0px 0px 3px 1px rgba(0, 0, 0, 0.1);
+  -moz-box-shadow: 0px 0px 3px 1px rgba(0, 0, 0, 0.1);
+}
+
 @font-face {
   font-family: "Inter";
   src: url("./assets/fonts/Inter/Inter_18pt-Regular.ttf") format("truetype");
@@ -29,4 +53,8 @@
 .font-inter-m {
   font-family: "Inter", sans-serif;
   font-style: medium;
+}
+
+.debug {
+  border: 1px solid red;
 }

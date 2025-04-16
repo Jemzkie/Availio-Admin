@@ -66,3 +66,23 @@ export const fetchUserEmail = async (email) => {
     return { success: false, message: "Something went wrong" };
   }
 };
+
+export const fetchAllUsers = async () => {
+  try {
+    const usersRef = collection(db, "users");
+
+    const querySnapshot = await getDocs(usersRef);
+
+    const usersWithVerification = [];
+
+    querySnapshot.forEach((doc) => {
+      const data = doc.data();
+      usersWithVerification.push({ id: doc.id, ...data });
+    });
+
+    return usersWithVerification;
+  } catch (error) {
+    console.log("Error fetching pending verifications:", error);
+    return [];
+  }
+};

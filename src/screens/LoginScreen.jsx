@@ -48,29 +48,51 @@ const LoginScreen = () => {
   };
 
   return (
-    <div className="w-screen h-screen flex items-center justify-center">
+    <div className="w-screen h-screen flex items-center font-inter justify-center">
       <form
         onSubmit={handleLogin}
-        className="w-md h-[448px] border-gray-400 border rounded-md"
+        className="w-md h-auto gap-2 flex flex-col p-5 border-gray-400 border rounded-md"
       >
-        <input
-          className="border border-gray-400"
-          type="email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value.trim())}
-        />
-        <input
-          className="border border-gray-400"
-          value={password}
-          onChange={(e) => setPassword(e.target.value.trim())}
-          type="password"
-        />
-        {error && <p className="error-message">{error}</p>}
+        <div className="w-full flex flex-col items-center justify-center">
+          <img
+            className="w-[50%] h-24 object-contain pointer-events-none"
+            src="./AvailioL.png"
+          />
+          <label className="text-2xl">Admin Login</label>
+        </div>
+        <div className="flex flex-col gap-1">
+          <label>Email</label>
+          <input
+            className="border px-4 py-2 rounded-sm border-gray-400"
+            type="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value.trim())}
+          />
+        </div>
+
+        <div className="flex flex-col gap-1">
+          <label>Password</label>
+          <input
+            className="border px-4 py-2 rounded-sm border-gray-400"
+            value={password}
+            onChange={(e) => setPassword(e.target.value.trim())}
+            type="password"
+          />
+        </div>
+
+        <div className="flex justify-center">
+          {error && (
+            <p className="text-red-600 bg-red-100 px-2 rounded-md py-1">
+              {error}
+            </p>
+          )}
+        </div>
+
         <button
           type="submit"
           disabled={loading}
-          className={`w-full py-4 px-10 rounded-lg  text-white font-semibold font-roboto mt-5 cursor-pointer ${
-            loading ? "bg-gray-400" : "bg-[#2E709E]"
+          className={`w-full py-4 px-10 rounded-lg hover:bg-[#E60000] duration-300 text-white font-semibold font-roboto cursor-pointer ${
+            loading ? "bg-gray-400" : "bg-[#141414]"
           }`}
         >
           {loading ? "Logging in..." : "Login"}
