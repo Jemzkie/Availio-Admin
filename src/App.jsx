@@ -6,6 +6,8 @@ import {
   Navigate,
 } from "react-router-dom";
 import "./App.css";
+import "react-toastify/dist/ReactToastify.css";
+import { ToastContainer } from "react-toastify";
 import LoginScreen from "./screens/LoginScreen";
 import { fetchUserRole } from "./hooks/data/userData";
 import DashboardScreen from "./screens/DashboardScreen";
@@ -35,6 +37,18 @@ function App() {
 
   return (
     <Router>
+      <ToastContainer
+        position="top-center"
+        autoClose={3000}
+        hideProgressBar={false}
+        newestOnTop
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable={false}
+        pauseOnHover
+        theme="light"
+      />
       <Routes>
         <Route path="/" element={<LoginScreen />} />
 
