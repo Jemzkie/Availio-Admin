@@ -2,7 +2,8 @@
 
 :root {
   --primary: #ffffff;
-  --secondary: #e60000;
+  --secondary: #ed1c24;
+  --dark: #000000;
 }
 
 *::-webkit-scrollbar {

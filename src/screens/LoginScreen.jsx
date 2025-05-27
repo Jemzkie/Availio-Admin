@@ -48,41 +48,47 @@ const LoginScreen = () => {
   };
 
   return (
-    <div className="w-screen h-screen flex items-center font-inter justify-center">
+    <div className="w-screen h-screen flex items-center font-inter justify-center bg-[#ed1c24]">
       <form
         onSubmit={handleLogin}
-        className="w-md h-auto gap-2 flex flex-col p-5 border-gray-400 border rounded-md"
+        className="w-md h-auto gap-4 flex flex-col p-8 bg-white rounded-lg shadow-xl"
       >
-        <div className="w-full flex flex-col items-center justify-center">
-          <img
-            className="w-[50%] h-24 object-contain pointer-events-none"
-            src="./AvailioL.png"
-          />
-          <label className="text-2xl">Admin Login</label>
+        <div className="w-full flex flex-col items-center justify-center gap-4">
+          {/* TODO: Replace with your actual logo image */}
+          <div className="w-48 h-24 bg-black/5 rounded-lg flex items-center justify-center">
+            <img
+              className="max-h-full max-w-full object-contain"
+              src="./AvailioL.png"
+              alt="Logo"
+            />
+          </div>
+          <label className="text-2xl font-semibold text-black">Admin Login</label>
         </div>
-        <div className="flex flex-col gap-1">
-          <label>Email</label>
+        <div className="flex flex-col gap-2">
+          <label className="text-black font-medium">Email</label>
           <input
-            className="border px-4 py-2 rounded-sm border-gray-400"
+            className="border px-4 py-2 rounded-md border-gray-300 focus:border-[#ed1c24] focus:outline-none transition-colors duration-300"
             type="email"
             value={email}
             onChange={(e) => setEmail(e.target.value.trim())}
+            placeholder="Enter your email"
           />
         </div>
 
-        <div className="flex flex-col gap-1">
-          <label>Password</label>
+        <div className="flex flex-col gap-2">
+          <label className="text-black font-medium">Password</label>
           <input
-            className="border px-4 py-2 rounded-sm border-gray-400"
+            className="border px-4 py-2 rounded-md border-gray-300 focus:border-[#ed1c24] focus:outline-none transition-colors duration-300"
             value={password}
             onChange={(e) => setPassword(e.target.value.trim())}
             type="password"
+            placeholder="Enter your password"
           />
         </div>
 
         <div className="flex justify-center">
           {error && (
-            <p className="text-red-600 bg-red-100 px-2 rounded-md py-1">
+            <p className="text-[#ed1c24] bg-red-50 px-4 py-2 rounded-md text-sm">
               {error}
             </p>
           )}
@@ -91,8 +97,8 @@ const LoginScreen = () => {
         <button
           type="submit"
           disabled={loading}
-          className={`w-full py-4 px-10 rounded-lg hover:bg-[#E60000] duration-300 text-white font-semibold font-roboto cursor-pointer ${
-            loading ? "bg-gray-400" : "bg-[#141414]"
+          className={`w-full py-3 px-10 rounded-md text-white font-semibold transition-colors duration-300 ${
+            loading ? "bg-gray-400" : "bg-[#ed1c24] hover:bg-[#ed1c24]/90"
           }`}
         >
           {loading ? "Logging in..." : "Login"}
