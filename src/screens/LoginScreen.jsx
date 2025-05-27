@@ -48,14 +48,13 @@ const LoginScreen = () => {
   };
 
   return (
-    <div className="w-screen h-screen flex items-center font-inter justify-center bg-[#ed1c24]">
+    <div className="w-screen h-screen flex items-center font-inter justify-center bg-[#ed1c24]/98">
       <form
         onSubmit={handleLogin}
         className="w-md h-auto gap-4 flex flex-col p-8 bg-white rounded-lg shadow-xl"
       >
         <div className="w-full flex flex-col items-center justify-center gap-4">
-          {/* TODO: Replace with your actual logo image */}
-          <div className="w-48 h-24 bg-black/5 rounded-lg flex items-center justify-center">
+          <div className="w-48 h-24 flex items-center justify-center">
             <img
               className="max-h-full max-w-full object-contain"
               src="./AvailioL.png"
