@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import logo from "../../assets/images/AvailioL.png";
 import { RxDashboard } from "react-icons/rx";
 import { GiScooter } from "react-icons/gi";
@@ -8,14 +8,30 @@ import { AiOutlineTransaction } from "react-icons/ai";
 import { MdLogout } from "react-icons/md";
 import { Link } from "react-router-dom";
 import { signOut } from "firebase/auth";
-import { auth } from "../../config/firebaseConfig";
+import { auth, db } from "../../config/firebaseConfig";
 import { useNavigate } from "react-router-dom";
 import { LuMessageCircleMore } from "react-icons/lu";
 import { MoonLoader } from "react-spinners";
+import { doc, getDoc } from "firebase/firestore";
 
 const Menu = ({ ViewData }) => {
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
+  const [userRole, setUserRole] = useState(null);
+
+  useEffect(() => {
+    const fetchUserRole = async () => {
+      const user = auth.currentUser;
+      if (user) {
+        const userDoc = await getDoc(doc(db, "users", user.uid));
+        if (userDoc.exists()) {
+          setUserRole(userDoc.data().role);
+        }
+      }
+    };
+    fetchUserRole();
+  }, []);
+
   const logout = async () => {
     try {
       setLoading(true);
@@ -49,16 +65,29 @@ const Menu = ({ ViewData }) => {
         </Link>
 
         <Link
-          to="/users"
+          to="/owners"
           className={`flex gap-2 items-center py-3 rounded-md duration-300 ${
-            ViewData === "Users" ? "bg-[#E60000]" : "hover:bg-white/10"
+            ViewData === "Owners" ? "bg-[#E60000]" : "hover:bg-white/10"
           }`}
         >
-          {ViewData === "Users" ? (
+          {ViewData === "Owners" ? (
             <div className="bg-white h-8 w-1 rounded-md"></div>
           ) : null}
           <LuBookCheck className="text-white w-6 h-6" />
-          <label className="text-white text-lg cursor-pointer">Users</label>
+          <label className="text-white text-lg cursor-pointer">Owners</label>
+        </Link>
+
+        <Link
+          to="/renters"
+          className={`flex gap-2 items-center py-3 rounded-md duration-300 ${
+            ViewData === "Renters" ? "bg-[#E60000]" : "hover:bg-white/10"
+          }`}
+        >
+          {ViewData === "Renters" ? (
+            <div className="bg-white h-8 w-1 rounded-md"></div>
+          ) : null}
+          <LuBookCheck className="text-white w-6 h-6" />
+          <label className="text-white text-lg cursor-pointer">Renters</label>
         </Link>
 
         <Link

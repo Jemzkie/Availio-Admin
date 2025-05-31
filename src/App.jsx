@@ -62,7 +62,16 @@ function App() {
         />
 
         <Route
-          path="/users"
+          path="/owners"
+          element={
+            <ProtectedRoute role={userRole} allowedRoles={["admin"]}>
+              <UsersScreen getUser={getUser} />
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/renters"
           element={
             <ProtectedRoute role={userRole} allowedRoles={["admin"]}>
               <UsersScreen getUser={getUser} />
