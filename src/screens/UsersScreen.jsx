@@ -5,9 +5,12 @@ import Users from "../components/Users/Users";
 import Menu from "../components/General/Menu";
 import Loader from "../components/General/Loader";
 import VerifyUserModal from "../components/Users/VerifyUserModal";
+import { useLocation } from "react-router-dom";
 
 const UsersScreen = () => {
-  const ViewData = "Users";
+  const location = useLocation();
+  const userType = location.pathname.includes("owners") ? "owners" : "renters";
+  const ViewData = userType === "owners" ? "Owners" : "Renters";
 
   const [allUsers, setAllUsers] = useState([]);
   const [selectedUser, setSelectedUser] = useState(null);
@@ -66,6 +69,7 @@ const UsersScreen = () => {
           openModal={openModal}
           allUsers={allUsers}
           selectedUser={selectedUser}
+          userType={userType}
         />
       </div>
 
